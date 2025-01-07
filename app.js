@@ -11,6 +11,14 @@ const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 3000;
 
+console.log("DB Config:", {
+    host: process.env.DB_HOST,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    port: process.env.DB_PORT,
+});
+
 const corsOptions = {
     origin: process.env.FRONTEND_URL || 'http://localhost:5173',
     credentials: true,
@@ -26,6 +34,8 @@ app.use(cookieParser());
 app.use('/api/auth', AuthRoutes);
 app.use('/api/users', UserRoutes);
 app.use('/api/examenes', ExamenRoutes);
+
+
 
 db.sequelize.sync({ alter: false, force: false }).then(() => {
     app.listen(PORT, () => {
