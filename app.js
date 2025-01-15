@@ -5,7 +5,8 @@ const path = require('path')
 const db = require('./models');
 const AuthRoutes = require('./routes/AuthRoutes');
 const UserRoutes = require('./routes/UserRoutes');
-const ExamenRoutes = require('./routes/ExamenRoutes')
+const ExamenRoutes = require('./routes/ExamenRoutes');
+const DashboardRoutes = require('./routes/DashboardRoutes');
 const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 3000;
@@ -29,6 +30,7 @@ app.use(cookieParser());
 app.use('/api/auth', AuthRoutes);
 app.use('/api/users', UserRoutes);
 app.use('/api/examenes', ExamenRoutes);
+app.use('/api/dashboard', DashboardRoutes);
 
 db.sequelize.sync().then((req) => {
     app.listen(PORT, () => {
