@@ -31,7 +31,8 @@ const DashboardController = {
                         ]
                     }
                 ],
-                limit: 2
+                order: [['createdAt', 'DESC']], 
+                limit: 2 
             });
 
             if (!pacienteUsers || !examenes) {
